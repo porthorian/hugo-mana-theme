@@ -10,13 +10,7 @@
   <div class="posts-list">
     {{ range .Paginator.Pages }}
     <article class="post-card">
-      {{ if .Params.image }}
-      <div class="post-image">
-        <a href="{{ .RelPermalink }}">
-          <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy">
-        </a>
-      </div>
-      {{ end }}
+      {{ partial "post-image.html" . }}
       
       <div class="post-content">
         <h2 class="post-title">

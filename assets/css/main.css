@@ -308,21 +308,23 @@ main {
 }
 
 .post-tag {
-  padding: 0.375rem 0.75rem;
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 1px solid var(--accent-primary);
-  border-radius: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 0.5px solid var(--accent-primary);
+  border-radius: 0.25rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
   transition: all var(--transition-fast);
+  opacity: 0.8;
 }
 
 .post-tag:hover {
-  background-color: var(--accent-primary);
-  color: white;
+  background-color: transparent;
+  color: var(--accent-primary);
   border-color: var(--accent-primary);
+  opacity: 1;
 }
 
 /* Single Post */
@@ -433,21 +435,23 @@ main {
 }
 
 .post-tags-footer .post-tag {
-  padding: 0.375rem 0.75rem;
-  background-color: var(--bg-secondary);
-  color: var(--text-secondary);
-  border: 1px solid var(--accent-primary);
-  border-radius: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 0.5px solid var(--accent-primary);
+  border-radius: 0.25rem;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
   transition: all var(--transition-fast);
+  opacity: 0.8;
 }
 
 .post-tags-footer .post-tag:hover {
-  background-color: var(--accent-primary);
-  color: white;
+  background-color: transparent;
+  color: var(--accent-primary);
   border-color: var(--accent-primary);
+  opacity: 1;
 }
 
 .tags-label {
