@@ -1252,8 +1252,8 @@ main {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: var(--yellow-accent);
-  color: #000;
+  background-color: var(--accent-primary);
+  color: white;
   border: none;
   cursor: pointer;
   display: none;
@@ -1269,7 +1269,7 @@ main {
 }
 
 .scroll-to-top:hover {
-  background-color: var(--yellow-hover);
+  background-color: var(--accent-hover);
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
 }
