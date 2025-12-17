@@ -244,10 +244,13 @@
   });
 })();
 
-// Interactive Table of Contents
+// Interactive Table of Contents with Burger Menu
 (function() {
   const toc = document.getElementById('post-toc');
-  if (!toc) return;
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocContent = document.getElementById('toc-content');
+  
+  if (!toc || !tocToggle || !tocContent) return;
   
   const tocLinks = toc.querySelectorAll('a[href^="#"]');
   const headings = Array.from(tocLinks).map(link => {
@@ -256,6 +259,55 @@
     const element = document.getElementById(id);
     return { link, element, id };
   }).filter(item => item.element);
+  
+  // Check if screen is wide (desktop)
+  function isWideScreen() {
+    return window.innerWidth > 1024;
+  }
+  
+  // Expand TOC
+  function expandTOC() {
+    tocToggle.setAttribute('aria-expanded', 'true');
+    tocContent.classList.add('expanded');
+  }
+  
+  // Collapse TOC
+  function collapseTOC() {
+    tocToggle.setAttribute('aria-expanded', 'false');
+    tocContent.classList.remove('expanded');
+  }
+  
+  // Toggle TOC
+  function toggleTOC() {
+    const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+    if (isExpanded) {
+      collapseTOC();
+    } else {
+      expandTOC();
+    }
+  }
+  
+  // Initialize: Open by default on wide screens, closed on narrow
+  function initializeTOCState() {
+    if (isWideScreen()) {
+      expandTOC();
+    } else {
+      collapseTOC();
+    }
+  }
+  
+  // Toggle on button click
+  tocToggle.addEventListener('click', toggleTOC);
+  
+  // Re-initialize on resize (debounced)
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(initializeTOCState, 150);
+  });
+  
+  // Initialize state
+  initializeTOCState();
   
   if (headings.length === 0) return;
   
@@ -278,17 +330,17 @@
     if (activeHeading) {
       activeHeading.link.classList.add('active');
       
-      // Scroll TOC to show active item
-      if (activeHeading.link) {
+      // Scroll TOC content to show active item (only if expanded)
+      if (tocContent.classList.contains('expanded') && activeHeading.link) {
         const linkTop = activeHeading.link.offsetTop;
         const linkHeight = activeHeading.link.offsetHeight;
-        const tocHeight = toc.offsetHeight;
-        const tocScrollTop = toc.scrollTop;
+        const contentHeight = tocContent.offsetHeight;
+        const contentScrollTop = tocContent.scrollTop;
         
-        if (linkTop < tocScrollTop) {
-          toc.scrollTo({ top: linkTop - 20, behavior: 'smooth' });
-        } else if (linkTop + linkHeight > tocScrollTop + tocHeight) {
-          toc.scrollTo({ top: linkTop - tocHeight + linkHeight + 20, behavior: 'smooth' });
+        if (linkTop < contentScrollTop) {
+          tocContent.scrollTo({ top: linkTop - 20, behavior: 'smooth' });
+        } else if (linkTop + linkHeight > contentScrollTop + contentHeight) {
+          tocContent.scrollTo({ top: linkTop - contentHeight + linkHeight + 20, behavior: 'smooth' });
         }
       }
     }
