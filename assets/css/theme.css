@@ -71,11 +71,11 @@ html {
 
 [data-theme="light"] {
   --bg-primary: #ffffff;
-  /* Light theme glassmorphism - semi-transparent dark overlays */
-  --glass-surface: rgba(0, 0, 0, 0.03); /* Subtle dark overlay for glass effect */
-  --glass-border: rgba(0, 0, 0, 0.08); /* Subtle dark border */
+  /* Light theme glassmorphism - minimal white overlay, backdrop blur creates the glassy effect */
+  --glass-surface: rgba(255, 255, 255, 0.2); /* Minimal white overlay - backdrop blur does the work */
+  --glass-border: rgba(196, 181, 253, 0.5); /* More defined purple-tinted border for better visibility */
   --bg-secondary: var(--glass-surface); /* Use glass-surface for glass effect */
-  --bg-tertiary: rgba(0, 0, 0, 0.05);
+  --bg-tertiary: rgba(255, 255, 255, 0.25); /* Slightly more visible for tertiary surfaces */
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
