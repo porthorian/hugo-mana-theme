@@ -90,13 +90,15 @@
   function performSearch(query) {
     if (!searchResults) return;
     
-    if (!query || query.length < 2) {
+    // Trim whitespace and check if query has meaningful content
+    const trimmedQuery = query ? query.trim() : '';
+    if (!trimmedQuery || trimmedQuery.length < 2) {
       searchResults.innerHTML = '';
       toggleSearchResults();
       return;
     }
     
-    const queryLower = query.toLowerCase().trim();
+    const queryLower = trimmedQuery.toLowerCase();
     const seenPermalinks = new Set();
     const results = searchIndex.filter(item => {
       if (!item || !item.permalink) return false;
