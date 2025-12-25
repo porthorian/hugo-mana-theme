@@ -93,6 +93,7 @@ body {
 }
 
 .header-logo .logo-link {
+  font-family: var(--font-logo);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
