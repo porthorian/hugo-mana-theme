@@ -28,7 +28,23 @@
 }
 
 .code-block-toggle:hover {
-  background: rgba(30, 30, 45, 0.95);
+  background: var(--bg-tertiary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+}
+
+/* Light mode styles for code block toggle */
+[data-theme="light"] .code-block-toggle {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(107, 33, 168, 0.2);
+  color: var(--text-secondary);
+  top: 8px;
+}
+
+[data-theme="light"] .code-block-toggle:hover {
+  background: rgba(255, 255, 255, 1);
   border-color: var(--accent-primary);
   color: var(--accent-primary);
 }
@@ -53,6 +69,11 @@
   overflow: hidden;
   opacity: 0.7;
   position: relative;
+}
+
+/* Reduce fade effect in light mode */
+[data-theme="light"] .code-block-wrapper.collapsed .code-block-content {
+  opacity: 0.9;
 }
 
 .code-block-wrapper.collapsed .code-block-content::after {
