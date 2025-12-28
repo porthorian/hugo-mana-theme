@@ -1,5 +1,5 @@
-{{ $themeCss := resources.Get "css/theme.css" }}
-<link rel="stylesheet" href="{{ $themeCss.RelPermalink }}">
+{{ $themeCss := resources.Get "css/theme.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $themeCss.RelPermalink }}" integrity="{{ $themeCss.Data.Integrity }}">
 
 {{ partial "head/syntax-highlight.html" . }}
 

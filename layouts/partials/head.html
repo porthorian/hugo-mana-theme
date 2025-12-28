@@ -10,7 +10,7 @@
   })();
 </script>
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
-<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+<meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .IsHome }}{{ site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
 
 {{ if .Params.tags }}
 <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
@@ -22,6 +22,10 @@
 
 <link rel="canonical" href="{{ .Permalink }}">
 
+{{ partial "head/robots.html" . }}
+{{ partial "head/opengraph.html" . }}
+{{ partial "head/json-ld.html" . }}
+
 <!-- Google Fonts: Space Grotesk (headings), Inter (body), Outfit (logo), and JetBrains Mono (code) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,9 +34,15 @@
 {{ partial "head/css.html" . }}
 
 <!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="/favicon/logo-transparent/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon/logo-transparent/favicon-16x16.png">
+<!-- Root favicon for Google and other crawlers - Google prefers larger sizes (48x48+) -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+<!-- Primary PNG favicon - Google also checks for /favicon.png -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<!-- Primary favicon - Google prefers 32x32 or larger -->
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/logo-transparent/favicon-32x32.png">
+<!-- Additional favicon formats -->
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/logo-transparent/favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/logo-transparent/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon/logo-transparent/android-chrome-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon/logo-transparent/android-chrome-512x512.png">
