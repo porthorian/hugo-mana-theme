@@ -56,6 +56,8 @@ A custom Hugo theme inspired by PaperModX and Blowfish, featuring a dark theme b
 - **Avatar support** for home and about pages
 - **SEO meta tags** (description, keywords, author, canonical)
 - **Favicon support** with multiple sizes and formats
+- **Umami Analytics** integration (optional)
+- **Custom 404 page** with configurable message
 
 ## Installation
 
@@ -73,7 +75,7 @@ Then set `theme = "mana"` in your `hugo.toml` configuration file.
 
 ## Configuration
 
-Add the following configuration to your `hugo.toml` file:
+Add the following configuration to your `hugo.toml` file. You can also reference the `example.toml` file in the theme root for a complete example configuration.
 
 ### Basic Configuration
 
@@ -207,6 +209,37 @@ Enable JSON output for search functionality:
   home = ["HTML", "JSON"]
 ```
 
+### 404 Page Configuration
+
+Customize the 404 error page message:
+
+```toml
+[params]
+  # Custom message for the 404 error page (supports HTML)
+  # If not set, defaults to: "Sorry, the page you are looking for could not be found."
+  custom404Message = "Sorry, the page you are looking for could not be found. I guess I don't have a guide for <em>everything</em>"
+```
+
+The 404 page uses the same hero section styling as your home page, providing a consistent user experience.
+
+### Umami Analytics
+
+The theme supports Umami Analytics for privacy-friendly page tracking:
+
+```toml
+[params]
+  [params.umami]
+    # Set your Umami website ID for page tracking
+    websiteId = "your-umami-website-id"
+```
+
+To use Umami:
+1. Sign up for an account at [Umami Cloud](https://umami.is/) or self-host Umami
+2. Create a website in your Umami dashboard
+3. Copy your website ID and add it to your configuration
+
+The Umami script will be automatically included in your site's `<head>` section.
+
 ## Post Frontmatter
 
 The theme supports standard Hugo frontmatter. For post images, add an `image` parameter:
@@ -229,6 +262,7 @@ The theme includes layouts for:
 - **Tags page** - Tag cloud view
 - **Individual tag page** - Posts grouped by year for each tag
 - **About page** - About page with avatar and social links
+- **404 page** - Custom error page with hero section styling
 
 ## License
 
