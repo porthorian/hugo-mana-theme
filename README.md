@@ -1,6 +1,6 @@
 # Hugo Mana Theme
 
-A custom Hugo theme inspired by PaperModX and Blowfish, featuring a dark theme by default, clean aesthetics, and modern functionality.
+Futuristic hugo theme featuring clean aesthetics, and modern functionality and responsive design.
 
 ## Features
 
