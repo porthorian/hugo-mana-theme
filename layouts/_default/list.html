@@ -25,10 +25,7 @@
       {{ if .Description }}
         <p class="list-description">{{ .Description }}</p>
       {{ end }}
-      <div class="list-count">
-        <span id="filtered-count">{{ len .Paginator.Pages }}</span>
-        {{ if eq (len .Paginator.Pages) 1 }}post{{ else }}posts{{ end }}
-      </div>
+      {{ partial "list-count.html" . }}
     </header>
 
     <!-- Filter Controls -->
@@ -112,6 +109,9 @@
         }}
       {{ end }}
     </div>
+
+    <!-- Pagination -->
+    {{ partial "pagination.html" . }}
 
     <!-- Navigation links -->
     {{ partial "back-to-home.html" . }}

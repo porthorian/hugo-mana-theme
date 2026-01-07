@@ -107,6 +107,12 @@ name = 'About'
 url = '/about/'
 weight = 40
 
+# Pagination Configuration
+# Configure how many posts to show per page
+# Default is 10 if not specified
+[pagination]
+  pageSize = 10  # Number of posts per page
+
 # Table of Contents (recommended)
 [markup]
   [markup.tableOfContents]
